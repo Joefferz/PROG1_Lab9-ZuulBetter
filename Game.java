@@ -35,6 +35,9 @@ public class Game
     private void createRooms()
     {
         Room outside, theater, pub, lab, office;
+        
+        //create items
+        Item sword = new Item("a shiny silver sword", 3);
       
         // create the rooms
         outside = new Room("outside the main entrance of the university");
@@ -47,16 +50,21 @@ public class Game
         outside.setExit("east", theater);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
+        outside.setItem(sword);
         
         theater.setExit("west", outside);
+        theater.setItem(sword);
         
         pub.setExit("east", outside);
+        pub.setItem(sword);
         
         lab.setExit("north", outside);
         lab.setExit("east", office);
+        lab.setItem(sword);
         
         office.setExit("west", lab);
-
+        office.setItem(sword);
+        
         currentRoom = outside;  // start game outside
     }
 
