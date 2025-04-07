@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.ArrayList;
+
 /**
  * Class Room - a room in an adventure game.
  *
@@ -17,6 +19,7 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;
+    private ArrayList<Item> items;
     private Item item;
 
     /**
@@ -29,11 +32,12 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
+        this.items = new ArrayList<>();
     }
     
-    public void setItem(Item item)
+    public void addItem(Item item)
     {
-        this.item = item;
+        items.add(item);
     }
     
     public Room getExit(String direction)
@@ -64,7 +68,12 @@ public class Room
     
     private String getIemDescription()
     {
-       String itemDesc = "Item: " + item.itemDescription() + ", Weight: " + item.itemWeight();
+        String itemDesc = "Item: " + "\n";
+       //item.itemDescription() + ", Weight: " + item.itemWeight();
+       for(Item item : items)
+       {
+        itemDesc += item.itemDescription() + ", Weight: " + item.itemWeight() + "\n";
+        }
        return itemDesc;
     }
 

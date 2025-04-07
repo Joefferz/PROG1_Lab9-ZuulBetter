@@ -38,6 +38,8 @@ public class Game
         
         //create items
         Item sword = new Item("a shiny silver sword", 3);
+        Item ball = new Item("a blue round ball", 2);
+        Item keycard = new Item("a lvl1 keycard", 3);
       
         // create the rooms
         outside = new Room("outside the main entrance of the university");
@@ -50,20 +52,26 @@ public class Game
         outside.setExit("east", theater);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
-        outside.setItem(sword);
+        outside.addItem(sword);
+        outside.addItem(ball);
         
         theater.setExit("west", outside);
-        theater.setItem(sword);
+        theater.addItem(sword);
+        theater.addItem(ball);
         
         pub.setExit("east", outside);
-        pub.setItem(sword);
+        pub.addItem(sword);
+        pub.addItem(ball);
         
         lab.setExit("north", outside);
         lab.setExit("east", office);
-        lab.setItem(sword);
+        lab.addItem(sword);
+        lab.addItem(ball);
+        lab.addItem(keycard);
+        
         
         office.setExit("west", lab);
-        office.setItem(sword);
+        office.addItem(keycard);
         
         currentRoom = outside;  // start game outside
     }
